@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 import Layout from './Components/Layout';
 import Home from './Components/Home';
 import Login from './Components/Login';
@@ -29,7 +29,7 @@ import PaymentContextProvide from './Context/PaymentContext';
 const query = new QueryClient()
 
 function App() {
-  const routes = createBrowserRouter([
+  const routes = createHashRouter([
     { path: '/', element: <Layout />, children: [
       { index: true, element:<ProtectedRoute> <Home /> </ProtectedRoute>  },
       { path: 'login', element:  <Login /> },

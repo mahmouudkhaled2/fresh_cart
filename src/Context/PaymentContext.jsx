@@ -10,13 +10,13 @@ export default function PaymentContextProvide({children}) {
     const [allOrders, setAllOrders] = useState([]);
     const [paymentType, setPaymentType] = useState('');
     const [loading, setLoading] = useState(false);
-    
+    const BASE_URL = `${window.location.origin}/fresh_cart`;
     function onlinePayment(cartId, shippingAddress) {
         setLoading(true)
         return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}`, {shippingAddress}, 
         {
             headers: { token: localStorage.getItem('userToken') }, 
-            params: { url : 'http://localhost:5173'}
+            params: { url : BASE_URL}
         })
         .then( data => {
             window.location.href = data.data.session.url
@@ -25,6 +25,8 @@ export default function PaymentContextProvide({children}) {
         })
         .catch( error => {
             setLoading(false)
+            console.log(error);
+            
             return error
         })
     }
@@ -41,7 +43,7 @@ export default function PaymentContextProvide({children}) {
             })
             .then((data) => {
                 if (data.isConfirmed)
-                    window.location.href = 'http://localhost:5173/allorders'
+                    window.location.href = `${BASE_URL}`
             })
             return data
             })
