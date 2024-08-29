@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+:root
+{
+    --main-color: #0e9f6e;
+    --light-color:#f0f3f2;
+    --shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
+    --font-family: "PT Sans", sans-serif;
+    --rating-color:#ffc908;
+}
+
+body{
+    font-family: var(--font-family) !important;
+    @apply bg-slate-100
+}
+
+.rating-color
+{
+    color: var(--rating-color);
+}
+
+.cursor-pointer
+{
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.font-sm
+{
+    font-size: 14px;
+}
+
+.text-main
+{
+    color: var(--main-color);
+}
+
+.bg-main
+{
+    background-color: var(--main-color) !important;
+}
+
+.bg-main-light 
+{
+    background-color: var(--light-color) !important;
+}
+
+.active {
+    @media (width <= 1024px) {
+        background-color: #0e9f6e;
+        color: #f0f3f2;
+    }
+
+    @media (width >= 1024px) {
+        color: #0e9f6e  ;
+    }
+}
+
+@media (width >= 1024px) {
+   .active::after {
+        content: '';
+        background-color: #0e9f6e;
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        top: 137%;
+        left: 0;
+    }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 0s ease-in-out 50000s;
+}
+
+.spinner {
+    width: 56px;
+    height: 56px;
+    border: 11.2px #166f0d double;
+    border-left-style: solid;
+    border-radius: 50%;
+    animation: spinner-aib1d7 0.75s infinite linear;
+ }
+ 
+ @keyframes spinner-aib1d7 {
+    to {
+       transform: rotate(360deg);
+    }
+ }
+
+ .related-pro .slick-list {
+    @apply py-10
+ }
+
+ .slick-prev:before, .slick-next:before {
+    color: #03543f;
+ }  
+
+ .slick-dots {
+    bottom: -35px;
+ }
+
+ .hide {
+    display: none !important;
+ }
