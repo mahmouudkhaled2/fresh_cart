@@ -10,10 +10,12 @@ export default function PaymentContextProvide({children}) {
     const [allOrders, setAllOrders] = useState([]);
     const [paymentType, setPaymentType] = useState('');
     const [loading, setLoading] = useState(false);
-    const BASE_URL = `${window.location.origin}/fresh_cart`;
+    const BASE_URL = `${window.location.origin}/fresh_cart/#`;
+
+
     function onlinePayment(cartId, shippingAddress) {
         setLoading(true)
-        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}`, {shippingAddress}, 
+        return axios.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}/#`, {shippingAddress}, 
         {
             headers: { token: localStorage.getItem('userToken') }, 
             params: { url : BASE_URL}
